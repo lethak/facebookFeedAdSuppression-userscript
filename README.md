@@ -15,13 +15,13 @@ For experimental private and personal use, without any warranty whatsoever.
 
 
 ### First time
-Load the [userscript](https://github.com/lethak/facebookFeedAdSuppression-userscript/raw/master/facebookFeedAdSuppression.user.js) with the recommended __tampermonkey__ browser extension
+Load the [userscript](https://github.com/lethak/facebookFeedAdSuppression-userscript/raw/master/dist/facebookFeedAdSuppression.user.js) with the recommended __tampermonkey__ browser extension
 * [Tampermonkey for Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 * [Tampermonkey for Firefox](https://addons.mozilla.org/fr/firefox/addon/tampermonkey/).
 
 For using greasemonkey over tampermonkey, please read the [troubleshooting](./doc/troubleshooting.md) section. 
 
-Direct link to the userscript: https://github.com/lethak/facebookFeedAdSuppression-userscript/raw/master/facebookFeedAdSuppression.user.js
+Direct link to the userscript: https://github.com/lethak/facebookFeedAdSuppression-userscript/raw/master/dist/facebookFeedAdSuppression.user.js
 
 
 ### Update

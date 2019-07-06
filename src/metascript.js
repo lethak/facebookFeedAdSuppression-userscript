@@ -9,8 +9,8 @@ module.exports = {
     'https://www.facebook.com*'
   ],
   homepage: 'https://github.com/lethak/facebookFeedAdSuppression-userscript',
-  downloadURL: 'https://raw.githubusercontent.com/lethak/facebookFeedAdSuppression-userscript/master/' + config.build.userscriptNamespace + '.user.js',
-  updateURL: 'https://raw.githubusercontent.com/lethak/facebookFeedAdSuppression-userscript/master/' + config.build.userscriptNamespace + '.meta.js',
+  downloadURL: 'https://raw.githubusercontent.com/lethak/facebookFeedAdSuppression-userscript/master/dist/' + config.build.userscriptNamespace + '.user.js',
+  updateURL: 'https://raw.githubusercontent.com/lethak/facebookFeedAdSuppression-userscript/master/dist/' + config.build.userscriptNamespace + '.meta.js',
   icon: 'https://i.imgur.com/UAyItAe.png',
   grant: 'none',
   'run-at': 'document-end',
