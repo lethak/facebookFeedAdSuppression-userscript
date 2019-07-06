@@ -1,5 +1,5 @@
 
-# facebookFeedAdSuppression Userscript
+# Facebook Feed, Ad Suppression Userscript
 
 This userscript is trying to improve the user experience on facebook.com by removing ads.
 
@@ -50,7 +50,7 @@ Each public version of the script is released as a tag with the following format
 ## Install
 
 ```bash
-npm run install
+npm install
 ```
 
 
