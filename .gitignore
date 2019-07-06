@@ -1,0 +1,7 @@
+.idea
+.DS_Store
+package-lock.json
+node_modules/*
+npm-debug.log
+yarn-error.log
+config/custom.env.js

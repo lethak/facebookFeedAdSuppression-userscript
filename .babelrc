@@ -1,0 +1,18 @@
+{
+  "presets": [
+    ["env", {
+      "useBuiltIns": true,
+      "spec": true,
+      "modules": false,
+      "debug": false,
+      "targets": {
+        "uglify": true
+      },
+      "include": ["transform-es2015-shorthand-properties", "transform-es2015-arrow-functions"]
+    }],
+  ],
+  "comments": false,
+  "plugins": ["transform-object-rest-spread"],
+  "sourceMaps": false,
+  "retainLines": false
+}
