@@ -10,5 +10,5 @@
 // @icon https://i.imgur.com/UAyItAe.png
 // @grant none
 // @run-at document-end
-// @version 2019.7.10
+// @version 2019.7.11
 // ==/UserScript==
