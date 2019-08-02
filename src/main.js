@@ -38,10 +38,11 @@
       console.warn('[AD SUPRESSION] now removing story element = ', el)
     })
     if (el && el.parentNode) {
+      // const parentContainer = el.closest('*[role="feed"]')
       if (!isDebugEnabled) {
         el.parentNode.removeChild(el)
       } else {
-        el.querySelectorAll(storyCardColorContainerSelector).forEach((cardColorContainer) => {
+        el.parentNode.querySelectorAll(storyCardColorContainerSelector).forEach((cardColorContainer) => {
           cardColorContainer.style.backgroundColor = 'orange'
         })
       }
@@ -81,7 +82,7 @@
   const isDomStorySubHeaderButtonSponsored = function (storySubHeaderBtnElem) {
     const text = extractDomObfuscatedText(storySubHeaderBtnElem)
     const matchNumeric = text.match(/[0-9]/ig)
-    const matchSpace = text.match(/[ ]/ig)
+    const matchSpace = text.match(/\s/ig)
     const hasNumericValues = !!(text !== '' && matchNumeric && matchNumeric.length)
     const hasSpaceValues = !!(text !== '' && matchSpace && matchSpace.length)
     const isSponsored = (text && !hasNumericValues && !hasSpaceValues)
