@@ -15,10 +15,14 @@
 
   // Loop stuff...
 
-  const loopIntervalMs = 950
+  const loopIntervalMs = 450
   let loopHandler = null
   const loopStop = function () {
+    this.loopCreatedAt = 0
     if (loopHandler) {
+      executeInDebugMode(() => {
+        console.debug('[AD SUPRESSION] loopStop ... ')
+      })
       clearInterval(loopHandler)
       loopHandler = null
     }
@@ -95,42 +99,65 @@
   }
 
   const removeAdds = function () {
-    document.querySelectorAll(`${storyCardSelector}:not(.${randomStoryCardProcessedCssClass})`).forEach((storyCardEl) => {
-      // document.querySelectorAll(`${storyCardSelector}`).forEach((storyCardEl) => {
-      executeInDebugMode(() => {
-        storyCardEl.querySelectorAll(storyCardColorContainerSelector).forEach((cardColorContainer) => {
-          cardColorContainer.style.backgroundColor = 'rgb(150, 150, 150)'
-        })
-      })
-      storyCardEl.querySelectorAll(storySubHeaderSelector).forEach((storySubHeaderEl) => {
+    try {
+      document.querySelectorAll(`${storyCardSelector}:not(.${randomStoryCardProcessedCssClass})`).forEach((storyCardEl) => {
+        // document.querySelectorAll(`${storyCardSelector}`).forEach((storyCardEl) => {
         executeInDebugMode(() => {
-          storySubHeaderEl.style.backgroundColor = 'purple'
-        })
-        storySubHeaderEl.querySelectorAll(storySubHeaderButtonSelector).forEach((btnEl) => {
-          executeInDebugMode(() => {
-            btnEl.style.backgroundColor = 'cyan'
+          storyCardEl.querySelectorAll(storyCardColorContainerSelector).forEach((cardColorContainer) => {
+            cardColorContainer.style.backgroundColor = 'rgb(150, 150, 150)'
           })
-          const isSponsored = isDomStorySubHeaderButtonSponsored(btnEl)
-          if (isSponsored) {
-            storyCardEl.classList.add(randomStoryCardProcessedCssClass)
-            removeDomStoryCardElement(storyCardEl)
-          }
+        })
+        storyCardEl.querySelectorAll(storySubHeaderSelector).forEach((storySubHeaderEl) => {
+          executeInDebugMode(() => {
+            storySubHeaderEl.style.backgroundColor = 'purple'
+          })
+          storySubHeaderEl.querySelectorAll(storySubHeaderButtonSelector).forEach((btnEl) => {
+            executeInDebugMode(() => {
+              btnEl.style.backgroundColor = 'cyan'
+            })
+            const isSponsored = isDomStorySubHeaderButtonSponsored(btnEl)
+            if (isSponsored) {
+              storyCardEl.classList.add(randomStoryCardProcessedCssClass)
+              removeDomStoryCardElement(storyCardEl)
+            }
+          })
         })
       })
-    })
+    } catch (err) {
+      console.error('[AD SUPRESSION ERROR] : ', err.message, ' --- ', err)
+    }
   }
 
+  this.loopStart = () => {
+    const nowTs = (new Date()).getTime()
+    // If loop was created less than 1500 ms ago...
+    if (nowTs - this.loopCreatedAt < 1500) {
+      return null
+    }
+    loopStop()
+    executeInDebugMode(() => {
+      console.debug('[AD SUPRESSION] loopStart ... ')
+    })
+    this.loopCreatedAt = nowTs
+    loopHandler = setInterval(() => {
+      executeInDebugMode(() => {
+        console.debug('[AD SUPRESSION]  Loop tick !')
+      })
+      removeAdds()
+    }, loopIntervalMs)
+  }
   // EXEC ...
   loopStop()
   const randomStoryCardProcessedCssClass = randomId(getRandomInt(10, 30))
   executeInDebugMode(() => {
     console.warn('==== randomStoryCardProcessedCssClass ===== ', randomStoryCardProcessedCssClass)
   })
-  loopHandler = setInterval(() => {
-    try {
-      removeAdds()
-    } catch (err) {
-      console.error('[AD SUPRESSION ERROR] : ', err.message, ' --- ', err)
-    }
-  }, loopIntervalMs)
+  // Because FB clears all timeouts on each click...
+  window.addEventListener('scroll', (e) => {
+    executeInDebugMode(() => {
+      console.debug('- window scrolled -', e)
+    })
+    this.loopStart()
+  })
+  this.loopStart()
 })()
