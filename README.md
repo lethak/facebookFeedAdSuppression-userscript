@@ -19,7 +19,6 @@ Load the [userscript](https://github.com/lethak/facebookFeedAdSuppression-usersc
 * [Tampermonkey for Chrome](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
 * [Tampermonkey for Firefox](https://addons.mozilla.org/fr/firefox/addon/tampermonkey/).
 
-For using greasemonkey over tampermonkey, please read the [troubleshooting](./doc/troubleshooting.md) section. 
 
 Direct link to the userscript: https://github.com/lethak/facebookFeedAdSuppression-userscript/raw/master/dist/facebookFeedAdSuppression.user.js
 
